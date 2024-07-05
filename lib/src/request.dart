@@ -199,6 +199,7 @@ class BraintreePayPalRequest {
     this.billingAgreementDescription,
     this.payPalPaymentIntent = PayPalPaymentIntent.authorize,
     this.payPalPaymentUserAction = PayPalPaymentUserAction.default_,
+    this.offerPayLater = false,
   });
 
   /// Amount of the transaction. If [amount] is `null`, PayPal will use the billing agreement (Vault) flow.
@@ -221,6 +222,11 @@ class BraintreePayPalRequest {
   /// for additional documentation.
   PayPalPaymentUserAction payPalPaymentUserAction;
 
+  /// Set offerPayLater(true) on your PayPalRequest
+  /// to display Pay Later offers to eligible
+  /// customers after they have logged into PayPal.
+  bool offerPayLater;
+
   /// Converts this request object into a JSON-encodable format.
   Map<String, dynamic> toJson() => {
         if (amount != null) 'amount': amount,
@@ -230,6 +236,7 @@ class BraintreePayPalRequest {
           'billingAgreementDescription': billingAgreementDescription,
         'payPalPaymentIntent': payPalPaymentIntent.name,
         'payPalPaymentUserAction': payPalPaymentUserAction.name,
+        'offerPayLater': offerPayLater,
       };
 }
 
