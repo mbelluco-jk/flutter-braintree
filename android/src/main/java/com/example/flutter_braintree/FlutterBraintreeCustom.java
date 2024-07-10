@@ -104,8 +104,8 @@ public class FlutterBraintreeCustom extends AppCompatActivity implements PayPalL
             // Checkout flow
             PayPalCheckoutRequest checkOutRequest = new PayPalCheckoutRequest(intent.getStringExtra("amount"));
             checkOutRequest.setCurrencyCode(intent.getStringExtra("currencyCode"));
-            // Ref: https://developer.paypal.com/braintree/docs/guides/paypal/pay-later-offers/android/v3
-            checkOutRequest.offerPayLater(intent.getBooleanExtra("offerPayLater", false));
+            // Ref: https://developer.paypal.com/braintree/docs/guides/paypal/pay-later-offers/android/v4
+            checkOutRequest.setShouldOfferPayLater(intent.getBooleanExtra("offerPayLater", false));
             payPalClient.tokenizePayPalAccount(this, checkOutRequest);
         }
     }
